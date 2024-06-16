@@ -171,7 +171,7 @@ smpl["id"] = smpl.client_id + "_" + smpl.dt
 smpl["dt"] = smpl.dt.str[5:7].astype(int)
 top = smpl.geo_top.value_counts().head(30).index.values
 smpl.loc[~smpl.geo_top.isin(top), "geo_top"] = -1
-smpl["geo_top"] = pd.Categorical(smpl.geo_top)
+smpl["geo_top"] = pd.Categorical(smpl.geo_top.astype(str))
 
 nn_preds = None
 for ep in range(5):
